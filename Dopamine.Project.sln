@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dopamine.BatchRenderer", "Dopamine.BatchRenderer\Dopamine.BatchRenderer.csproj", "{8898B656-DB79-4638-9964-7344E429030A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dopamine.Core", "Dopamine.Core\Dopamine.Core.csproj", "{A51373D0-D313-43C8-A3CC-E3DAAE702CE4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dopamine.BenchmarkDotNet", "Dopamine.BenchmarkDotNet\Dopamine.BenchmarkDotNet.csproj", "{E9928728-11AD-4D81-8C3D-A4545ED41CAC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dopamine.GameFiles", "Dopamine.GameFiles\Dopamine.GameFiles.csproj", "{B4F12C77-3C9A-482B-A21B-2C46064485CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenTK.WinForms", "OpenTK.WinForms\OpenTK.WinForms.csproj", "{2E770932-F925-4755-A7FF-E1BB3759281F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8898B656-DB79-4638-9964-7344E429030A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8898B656-DB79-4638-9964-7344E429030A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8898B656-DB79-4638-9964-7344E429030A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8898B656-DB79-4638-9964-7344E429030A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A51373D0-D313-43C8-A3CC-E3DAAE702CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A51373D0-D313-43C8-A3CC-E3DAAE702CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A51373D0-D313-43C8-A3CC-E3DAAE702CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A51373D0-D313-43C8-A3CC-E3DAAE702CE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9928728-11AD-4D81-8C3D-A4545ED41CAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9928728-11AD-4D81-8C3D-A4545ED41CAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9928728-11AD-4D81-8C3D-A4545ED41CAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9928728-11AD-4D81-8C3D-A4545ED41CAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4F12C77-3C9A-482B-A21B-2C46064485CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F12C77-3C9A-482B-A21B-2C46064485CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F12C77-3C9A-482B-A21B-2C46064485CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F12C77-3C9A-482B-A21B-2C46064485CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E770932-F925-4755-A7FF-E1BB3759281F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E770932-F925-4755-A7FF-E1BB3759281F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E770932-F925-4755-A7FF-E1BB3759281F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E770932-F925-4755-A7FF-E1BB3759281F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5FF0C37-88AB-4DF8-9DBE-724981C68E33}
+	EndGlobalSection
+EndGlobal

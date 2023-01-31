@@ -1,0 +1,10 @@
+﻿[*.{cs,vb}]
+
+# IDE0017: Simplify object initialization
+dotnet_diagnostic.IDE0017.severity = silent
+
+# IDE0052: Remove unread private members
+dotnet_diagnostic.IDE0052.severity = silent
+
+# CS0414: The field 'BenchFluidDiffuseCUDA.Viscosity' is assigned but its value is never used
+dotnet_diagnostic.CS0414.severity = silent

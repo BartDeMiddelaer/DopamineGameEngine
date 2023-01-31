@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Image\dopamine.ico</ApplicationIcon>
+    <PackageIcon>dopamine.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Image\dopamine.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.4.0" />
+    <PackageReference Include="OpenTK" Version="4.7.5" />
+    <PackageReference Include="SFML.Net" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dopamine.BenchmarkDotNet\Dopamine.BenchmarkDotNet.csproj" />
+    <ProjectReference Include="..\Dopamine.GameFiles\Dopamine.GameFiles.csproj" />
+    <ProjectReference Include="..\Dopamine.Core\Dopamine.Core.csproj" />
+    <ProjectReference Include="..\OpenTK.WinForms\OpenTK.WinForms.csproj" />
+  </ItemGroup>
+
+</Project>
