@@ -13,11 +13,13 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Entities
         readonly private IEngineFunctionalitys _functionalitys;
         private float angle = 45.0f;
         private GLControl glControl;
-        int texturePtrID;
+        private int texturePtrID;
+        private Color backGroundColor;
 
-        public CubeShadre(Point location, Size size, IEngineFunctionalitys functionalitys)
+        public CubeShadre(Point location, Size size, IEngineFunctionalitys functionalitys, Color bgColor)
         {
             _functionalitys = functionalitys;
+            backGroundColor = bgColor;
 
             // GLControl it gives you the option to run a OpenGl window inside a Form
             // if you use openTk you will need to make a GameWindow. this cant run inside a Form
@@ -46,7 +48,7 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Entities
             FormBorderStyle = FormBorderStyle.None;
             Location = location;
             ClientSize = size;
-            BackColor = Color.Red;
+            BackColor = backGroundColor;
 
             // Add the shader in the form
             Controls.Add(glControl);
@@ -130,7 +132,7 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Entities
             glControl.MakeCurrent();
 
             // GL.ClearColor function is used to specify the color that is used to clear the color buffer.
-            GL.ClearColor(Color4.White);
+            GL.ClearColor(backGroundColor);
 
             // The EnableCap.DepthTest capability, when enabled, enables depth testing for OpenGL rendering.
             // Depth testing is a technique that is used to determine which objects in a 3D scene are visible and which

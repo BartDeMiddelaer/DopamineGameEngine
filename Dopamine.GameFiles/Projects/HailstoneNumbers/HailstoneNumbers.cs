@@ -36,6 +36,10 @@ namespace Dopamine.GameFiles.Projects.HailstoneNumbers
         {
             window.KeyPressed += KeyPressed;
         }
+        public void LoadInProjectAssets()
+        {
+
+        }
         public void GameLoop(RenderWindow window)
         {
             threeXPlusOneTrieNumbers.ForEach(b => {

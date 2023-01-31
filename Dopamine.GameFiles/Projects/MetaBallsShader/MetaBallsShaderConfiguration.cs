@@ -10,10 +10,8 @@ namespace Dopamine.GameFiles.Projects.MetaBallsShader
         public override bool EnableVsync { get; set; } = true;
         public override Styles WindowStyle { get; set; } = Styles.Close;
 
-        public static string[] SplashScreenCategorie { get; set; } = {
-             "Done Myself",
-             "Shader",
-             "Presentation"
+        public static string[] SplashScreenCategorie { get; set; } = {            
+             "Shader"
         };
     }
 }

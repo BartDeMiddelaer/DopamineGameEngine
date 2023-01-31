@@ -10,7 +10,7 @@ namespace Dopamine.BatchRenderer.Services
 {
     public class ProjectInjection<Renderer> where Renderer : IRenderer
     {
-        public void Inject(string gameToRun)
+        public ILifetimeScope? Inject(string gameToRun)
         {
             if (gameToRun != string.Empty)
             {
@@ -19,9 +19,13 @@ namespace Dopamine.BatchRenderer.Services
                 var gameContainerScope = gameContainer.BeginLifetimeScope();
 
                 // Runs if autofac is ready with injecting
-                gameContainerScope.Resolve<GameLoopLogic>().RunGameCycle();
+                return gameContainerScope;
             }
-            else Application.Exit();
+            else
+            {
+                Application.Exit();
+                return null;
+            }
         }
         private void SetGameFileEndConfigFile(ContainerBuilder builder, string gameFileName)
         {

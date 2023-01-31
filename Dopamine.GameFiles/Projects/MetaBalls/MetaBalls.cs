@@ -30,6 +30,10 @@ namespace Dopamine.GameFiles.Projects.MetaBalls
        
         }
         public void EventDeclaration(RenderWindow window) {}
+        public void LoadInProjectAssets()
+        {
+
+        }
         public void GameLoop(RenderWindow window)
         {
             

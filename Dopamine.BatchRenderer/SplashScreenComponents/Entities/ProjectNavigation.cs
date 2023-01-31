@@ -8,40 +8,47 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Entities
         public string GameFile { get; set; } = string.Empty;
         public FlowLayoutPanel ProjectFlowLayoutPanel { get; set; } = new();
         public ComboBox CategoryComboBox { get; set; } = new();
+        private Point location;
+        private Size size;
 
-        public ProjectNavigation(ISplashScreenFunctionalities splashScreenFunctionalities)
+        public ProjectNavigation(ISplashScreenFunctionalities splashScreenFunctionalities, Point location, Size size)
         {
             _splashScreenFunctionalities = splashScreenFunctionalities;
+            this.location = location;
+            this.size = size;
 
             // FlowPanal settings
             CreateProjectFlowLayoutPanel();        
             CreateCategoryComboBox();
             FillCategoryComboBox();
-            PrefillProjectFlowLayoutPanel();
+            FillProjectFlowLayoutPanel(null);
         }
-
         private void CreateProjectFlowLayoutPanel()
         {
-            ProjectFlowLayoutPanel.Location = new Point(245, 175);
-            ProjectFlowLayoutPanel.Size = new Size(510, 160);
+            ProjectFlowLayoutPanel.Location = location;
+            ProjectFlowLayoutPanel.Size = size;
             ProjectFlowLayoutPanel.BackColor = Color.White;
             ProjectFlowLayoutPanel.BorderStyle = BorderStyle.FixedSingle;
             ProjectFlowLayoutPanel.FlowDirection = FlowDirection.LeftToRight;
             ProjectFlowLayoutPanel.AutoScroll = true;
         }
-        private void FillProjectFlowLayoutPanel(string catogorieName)
+        private void FillProjectFlowLayoutPanel(string? catogorieName)
         {
-            var projectsOnCatogoryName = 
-                _splashScreenFunctionalities.GetAllProjectsOnCategoriesName(catogorieName);
+            List<string> files = new();
 
+            if (catogorieName != null)
+                files = _splashScreenFunctionalities.GetAllProjectsOnCategoriesName(catogorieName);   
+            else 
+                files = _splashScreenFunctionalities.GetProjectFiles();
+            
             // Fill the FlowLayoutPanel.controler with the buttons
-            projectsOnCatogoryName.ForEach(gamefile =>
+            files.ForEach(gamefile =>
             {
                 // Button Settings
                 Button button = new();
                 button.Text = gamefile;
                 button.BackColor = Color.LightGray;
-                button.Scale(new SizeF(2f, 1.36f));
+                button.Scale(new SizeF(1.80f, 1.6f));
 
                 //click action fills GameFile whit the game you want to pass it to the splachscreen
                 button.Click += (object? sender, EventArgs e) => GameFile = gamefile;
@@ -50,12 +57,12 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Entities
                 ProjectFlowLayoutPanel.Controls.Add(button);
             });
         }
-
         private void CreateCategoryComboBox()
         {
-            CategoryComboBox.Location = new Point(245, 145);
+            CategoryComboBox.Location = new Point(location.X,location.Y - 30);
             CategoryComboBox.TabIndex = 0;
-            CategoryComboBox.BackColor = Color.LightGray;
+            CategoryComboBox.Sorted = true;
+            CategoryComboBox.BackColor = Color.White;
         }
         private void FillCategoryComboBox()
         {
@@ -65,9 +72,6 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Entities
                 .GetAllCategories()
                 .ForEach(catogorie => CategoryComboBox.Items.Add(catogorie));
 
-            CategoryComboBox.Sorted = true;
-            CategoryComboBox.BackColor = Color.White;
-            CategoryComboBox.Size = new Size(200,30);
             CategoryComboBox.Items.Add(defaultSelectionName);
             CategoryComboBox.SelectedItem = CategoryComboBox.Items[0];
 
@@ -75,26 +79,8 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Entities
             {
                 ProjectFlowLayoutPanel.Controls.Clear();
                 FillProjectFlowLayoutPanel(CategoryComboBox.SelectedItem.ToString() ?? "");
-                if(CategoryComboBox.SelectedItem.ToString() == defaultSelectionName) PrefillProjectFlowLayoutPanel();
+                if(CategoryComboBox.SelectedItem.ToString() == defaultSelectionName) FillProjectFlowLayoutPanel(null);
             };          
-        }
-
-        private void PrefillProjectFlowLayoutPanel()
-        {
-            _splashScreenFunctionalities.GetProjectFiles().ForEach(gamefile =>
-            {
-                // Button Settings
-                Button button = new();
-                button.Text = gamefile;
-                button.BackColor = Color.LightGray;
-                button.Scale(new SizeF(2f, 1.36f));
-
-                //click action fills GameFile whit the game you want to pass it to the splachscreen
-                button.Click += (object? sender, EventArgs e) => GameFile = gamefile;
-
-                // Add the button
-                ProjectFlowLayoutPanel.Controls.Add(button);
-            });
-        }
+        }      
     }
 }

@@ -26,7 +26,7 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents
             _functionalitys = functionalitys;
 
             SetCubeShader();
-            SetFlowSplashScreenSettings();
+            SetSplashScreenSettings();
             SetLoopContainer();
             SetProjectNavigation();
             SetIco();
@@ -58,9 +58,9 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents
         private void DrawText(PaintEventArgs e)
         {
             _splashScreenFunctionalities.DrawString(e, new Point(0, 50), "Project", Color.White, new Font("Arial", 50));
+            _splashScreenFunctionalities.DrawString(e, new Point(12, 120), "Bart.D.M", Color.White, new Font("Arial", 10));
             _splashScreenFunctionalities.DrawString(e, new Point(235, 50), "Dopamine", Color.Black, new Font("Arial", 50));
             _splashScreenFunctionalities.DrawString(e, new Point(550, 92), "Game Engine", Color.Red, new Font("Arial", 15));
-            _splashScreenFunctionalities.DrawString(e, new Point(10, 125), "IPR - Bart De Middelaer", Color.White, new Font("Arial", 12));
         }
         private void DrawFooter(PaintEventArgs e)
         {
@@ -85,8 +85,8 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents
         }
         private void DrawBackground(PaintEventArgs e)
         {
-            _splashScreenFunctionalities.DrawSolidRoundedRect(e, new Point(232, 0), Width - 232, Height, 50, Color.White);
-            _splashScreenFunctionalities.DrawStrokedRoundedRect(e, new Point(2, 20), 5, Width, Height - 40, 60, Color.White);
+            _splashScreenFunctionalities.DrawSolidRoundedRect(e, new Point(232, 0), Width - 232, Height, 5, Color.White);
+            _splashScreenFunctionalities.DrawStrokedRoundedRect(e, new Point(2, 20), 5, Width, Height - 40, 5, Color.White);
         }    
         private void SetLoopContainer()
         {
@@ -98,7 +98,7 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents
             tikker.Interval = 15; // intervals of the Refresh
             tikker.Start(); // starts timer
         }
-        private void SetFlowSplashScreenSettings()
+        private void SetSplashScreenSettings()
         {
             ClientSize = new(860, 450); // Set size of splachscreen    
             Opacity = 0.9; // Set opacity of the screen          
@@ -109,14 +109,14 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents
         }
         private void SetProjectNavigation()
         {
-            projectNavigation = new(_splashScreenFunctionalities);
+            projectNavigation = new(_splashScreenFunctionalities, new Point(245, 175), new Size(600, 160));
             LoopContainer.Controls.Add(projectNavigation.ProjectFlowLayoutPanel);
             LoopContainer.Controls.Add(projectNavigation.CategoryComboBox);
         }
         private void SetCubeShader()
         {
             // Create a new CubeShadre Form
-            cubeShader = new CubeShadre(new Point(730, 20), new Size(120, 120), _functionalitys);
+            cubeShader = new CubeShadre(new Point(730, 20), new Size(120, 120), _functionalitys, Color.White);
 
             // Determines whether the object is a top-level window.
             // A top-level window is a window that is not contained within another window.

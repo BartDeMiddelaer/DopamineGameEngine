@@ -71,7 +71,9 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Services
 
             // return the names of the files
             fileNames.Sort();
-            return fileNames;
+            return fileNames
+                .Where(filename => !filename.Contains("Template"))
+                .ToList();
         }
         public List<string> GetProjectConfigFiles()
         {
@@ -85,7 +87,10 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Services
 
             // return the names of the files
             fileNames.Sort();
-            return fileNames;
+
+            return fileNames
+                .Where(filename => !filename.Contains("Template"))
+                .ToList();
         }
         public List<string> GetAllCategories()
         {
@@ -112,7 +117,10 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Services
                     if (!categories.Contains(item)) categories.Add(item);                             
             });
             categories.Sort();
-            return categories;
+
+            return categories
+                .Where(catogorie => !catogorie.Contains("Template"))
+                .ToList();
         }
         public List<string> GetAllProjectsOnCategoriesName(string categorie)
         {
@@ -140,7 +148,10 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents.Services
             });
 
             projectsOnCategoriesName.Sort();
-            return projectsOnCategoriesName;
+
+            return projectsOnCategoriesName
+                .Where(project => !project.Contains("Template"))
+                .ToList();
         }
     }
 }

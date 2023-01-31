@@ -10,10 +10,8 @@ namespace Dopamine.GameFiles.Projects.MetaBalls
         public override float WindowScale { get; set; } = 1.5f;
         public override bool EnableVsync { get; set; } = true;
 
-
         public static string[] SplashScreenCategorie { get; set; } = {
-            "Rework",
-            "Presentation"
+            "Rework"
         };
     }
 }

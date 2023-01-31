@@ -18,9 +18,7 @@ namespace Dopamine.GameFiles.Projects.AsteroidGame
 
         public static string[] SplashScreenCategorie { get; set; } = {
             "Game",
-            "Shader",
-            "Presentation",
-            "Done Myself"
+            "Shader"
         };
     }
 }

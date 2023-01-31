@@ -32,6 +32,11 @@ namespace Dopamine.GameFiles.Projects.TemplateShader
         }
 
         public void EventDeclaration(RenderWindow window) { }
+        public void LoadInProjectAssets()
+        {
+
+        }
+
         public void GameLoop(RenderWindow window)
         {
             shift += 0.001f;

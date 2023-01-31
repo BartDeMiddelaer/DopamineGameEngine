@@ -52,6 +52,10 @@ namespace Dopamine.GameFiles.Projects.MetaBallsShader
             window.KeyPressed += KeyPressed;
             window.KeyReleased += KeyReleased;
         }
+        public void LoadInProjectAssets()
+        {
+
+        }
         public void GameLoop(RenderWindow window)
         {
             soundControls.FideInBackgroundSound();

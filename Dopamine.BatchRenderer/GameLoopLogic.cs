@@ -4,6 +4,7 @@ using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
 using Image = SFML.Graphics.Image;
+using Dopamine.BatchRenderer.SplashScreenComponents;
 
 namespace Dopamine.BatchRenderer
 {
@@ -15,6 +16,7 @@ namespace Dopamine.BatchRenderer
         private readonly IEngineConfiguration _configuration;
         private readonly IWindowStatus _windowStatus;
         private readonly IEngineFunctionalitys _functionalitys;
+        private Task? loadInGameAssits = null;
 
         public GameLoopLogic(IEngineConfiguration configuration, IWindowStatus windowStatus ,
                               IGameFile gameFile, IEngineFunctionalitys functionalitys)
@@ -23,7 +25,7 @@ namespace Dopamine.BatchRenderer
             _configuration = configuration;
             _functionalitys = functionalitys;
             _gameFile = gameFile;
-
+           
             CreateRenderWindow();
             ConfigurRenderWindow();
             SetIco();
@@ -53,6 +55,15 @@ namespace Dopamine.BatchRenderer
                 }
             }
             else throw new ArgumentNullException(nameof(_configuration));
+        }
+        public Task LoadAssets()
+        {
+            if (loadInGameAssits == null)
+            {
+                loadInGameAssits = new Task(() => _gameFile.LoadInProjectAssets());              
+                loadInGameAssits.Start();
+            }
+            return loadInGameAssits;
         }
         private void CreateRenderWindow()
         {

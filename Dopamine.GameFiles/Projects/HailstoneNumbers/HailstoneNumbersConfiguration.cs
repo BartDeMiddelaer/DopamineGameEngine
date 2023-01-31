@@ -12,9 +12,7 @@ namespace Dopamine.GameFiles.Projects.HailstoneNumbers
         //public override uint? FramerateLimit { get; set; } = 10;
 
         public static string[] SplashScreenCategorie { get; set; } = {
-            "Cuda",
-            "Presentation",
-            "Done Myself"
+            "Cuda"
         };
     }
 }

@@ -17,8 +17,7 @@ namespace Dopamine.GameFiles.Projects.TemplateShader
         public override bool SmoothPixelImage { get; set; } = true;
 
         public static string[] SplashScreenCategorie { get; set; } = {
-            "Template",
-            "Shader"
+            "Template"
         };
     }
 }

@@ -21,7 +21,7 @@ public class AsteroidGame : BaseGameFile, IGameFile
     private readonly IEngineFunctionalitys _functionalitys;
     private readonly IKeyMapping _keyMapping;
 
-    private readonly Shader rayCastingShader;
+    private Shader rayCastingShader;
     private UiControls ui;
     private Ship ship;
     private bool joystickConnected = false;
@@ -38,8 +38,16 @@ public class AsteroidGame : BaseGameFile, IGameFile
         _functionalitys = functionalitys;
         _renderer = renderer;
         _configuration = configuration;
-        _keyMapping = keyMapping;
-
+        _keyMapping = keyMapping;   
+    }
+    public void EventDeclaration(RenderWindow window) 
+    {
+        JoystickConnectionEvents(window);
+        MousEvents(window);
+        KeyBordEvents(window);
+    }
+    public void LoadInProjectAssets()
+    {
         ui = new(_configuration);
         ammoLister = new(_functionalitys, _configuration);
         astroidLister = new(_functionalitys, _configuration);
@@ -54,15 +62,11 @@ public class AsteroidGame : BaseGameFile, IGameFile
 
         // set shader mode to fragment shader
         rayCastingShader = new Shader(null, null, shaderFile);
-        rayCastingShader.SetUniform("resulution", new Vector2f(configuration.WindowWidth, configuration.WindowHeight));
-        rayCastingShader.SetUniform("castRaysFrom", new Vector2f(-100,-100));
+        rayCastingShader.SetUniform("resulution", new Vector2f(_configuration.WindowWidth, _configuration.WindowHeight));
+        rayCastingShader.SetUniform("castRaysFrom", new Vector2f(-100, -100));
         rayCastingShader.SetUniformArray("astroidOridginals", astroidLister.GetAstroidOridginalsForShader());
-    }
-    public void EventDeclaration(RenderWindow window) 
-    {
-        JoystickConnectionEvents(window);
-        MousEvents(window);
-        KeyBordEvents(window);
+
+        Thread.Sleep(3000);
     }
     public void GameLoop(RenderWindow window)
     {
@@ -236,6 +240,6 @@ public class AsteroidGame : BaseGameFile, IGameFile
         ammoLister.MisselsOutlineColor = Color.White;
         ammoLister.MisselsFragmentColor = new Color(255, 100, 255, fillColorAlfha);
         ammoLister.MisselsFragmentOutlineColor = Color.Red;
-    }
+    }   
 }
 

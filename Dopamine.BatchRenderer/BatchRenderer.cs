@@ -1,5 +1,7 @@
 using Dopamine.Core.Services.RendererServices;
 using Dopamine.BatchRenderer.Services;
+using Dopamine.BatchRenderer.SplashScreenComponents;
+using Autofac;
 
 namespace Dopamine.BatchRenderer
 {
@@ -29,11 +31,15 @@ namespace Dopamine.BatchRenderer
         [STAThread]    
         static void Main()
         {
-            ProjectInjection<CPURendererService> projectInjection = new();
             SplashScreenInjection splashScreenInjection = new();
-
             splashScreenInjection.Inject();
-            projectInjection.Inject(splashScreenInjection.Project);
+
+            ProjectInjection<CPURendererService> projectInjection = new();
+            var gameScope = projectInjection.Inject(splashScreenInjection.Project);
+            GameLoopLogic? loopLogic = gameScope?.Resolve<GameLoopLogic>();
+
+            LoadScreenInjection loadScreenInjection = new();
+            loadScreenInjection.Inject(loopLogic, splashScreenInjection.Project);         
         }
     }
 }
