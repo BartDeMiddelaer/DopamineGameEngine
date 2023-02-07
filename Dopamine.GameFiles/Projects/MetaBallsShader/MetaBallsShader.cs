@@ -22,10 +22,10 @@ namespace Dopamine.GameFiles.Projects.MetaBallsShader
         private readonly IEngineFunctionalitys _functionalitys;
         private readonly IEngineConfiguration _configuration;
 
-        private readonly ShaderDataControls shaderDataControlls;
-        private readonly SoundControls soundControls;
-        private readonly MessageControls messageControls;
-        private readonly Clock clock = new();
+        private ShaderDataControls shaderDataControlls;
+        private SoundControls soundControls;
+        private MessageControls messageControls;
+        private Clock clock = new();
 
         private Shader mbShader;
         private List<MetaBall> metaBalles;
@@ -33,17 +33,10 @@ namespace Dopamine.GameFiles.Projects.MetaBallsShader
         // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
         #pragma warning disable CS8618
         public MetaBallsShader(IRenderer renderer, IEngineConfiguration configuration, IEngineFunctionalitys functionalitys)
-        {
-            shaderDataControlls = new ShaderDataControls(configuration);
-            soundControls = new SoundControls(functionalitys);
-            messageControls = new MessageControls(configuration);
-
+        {            
             _functionalitys = functionalitys;
             _renderer = renderer;
-            _configuration = configuration;
-
-            SetShaderInfo();
-            CreateMetaballs();
+            _configuration = configuration;        
         }
         #pragma warning restore CS8618 
 
@@ -54,7 +47,12 @@ namespace Dopamine.GameFiles.Projects.MetaBallsShader
         }
         public void LoadInProjectAssets()
         {
+            shaderDataControlls = new ShaderDataControls(_configuration);
+            soundControls = new SoundControls(_functionalitys);
+            messageControls = new MessageControls(_configuration);
 
+            SetShaderInfo();
+            CreateMetaballs();
         }
         public void GameLoop(RenderWindow window)
         {

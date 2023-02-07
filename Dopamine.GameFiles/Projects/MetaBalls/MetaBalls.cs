@@ -15,24 +15,22 @@ namespace Dopamine.GameFiles.Projects.MetaBalls
     {
         private readonly IRenderer _renderer;
         private readonly IEngineConfiguration _configuration;
-        private readonly List<MetaBall> metaBalles;
         private readonly HSLColor hslColor = new();
+        private List<MetaBall> metaBalles;
 
 
         public MetaBalls(IRenderer renderer, IEngineConfiguration configuration)
         {
             _renderer = renderer;
-            _configuration = configuration;
-            metaBalles = new List<MetaBall>();
-            Enumerable.Repeat(metaBalles, 10)
-                .ToList()
-                .ForEach(mb => mb.Add(new MetaBall(50,20, configuration)));
-       
+            _configuration = configuration;                
         }
         public void EventDeclaration(RenderWindow window) {}
         public void LoadInProjectAssets()
         {
-
+            metaBalles = new List<MetaBall>();
+            Enumerable.Repeat(metaBalles, 10)
+                .ToList()
+                .ForEach(mb => mb.Add(new MetaBall(50, 20, _configuration)));
         }
         public void GameLoop(RenderWindow window)
         {

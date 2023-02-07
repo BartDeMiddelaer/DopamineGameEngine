@@ -12,7 +12,7 @@ namespace Dopamine.GameFiles.Projects.TemplateShader
         private readonly IEngineConfiguration _configuration;
         private readonly IEngineFunctionalitys _functionalitys;
 
-        private readonly Shader myShader;
+        private Shader myShader;
         private float shift;
 
         public TemplateShader(IRenderer renderer, IEngineConfiguration configuration, IEngineFunctionalitys engineFunctionalitys)
@@ -20,7 +20,11 @@ namespace Dopamine.GameFiles.Projects.TemplateShader
             _functionalitys = engineFunctionalitys;
             _renderer = renderer;
             _configuration = configuration;
+        }
 
+        public void EventDeclaration(RenderWindow window) { }
+        public void LoadInProjectAssets()
+        {
             // get shader file from path still nee to shorten the path name
             Stream shaderFile =
                 new FileStream(
@@ -29,12 +33,6 @@ namespace Dopamine.GameFiles.Projects.TemplateShader
 
             // set shader mode to fragment shader
             myShader = new Shader(null, null, shaderFile);
-        }
-
-        public void EventDeclaration(RenderWindow window) { }
-        public void LoadInProjectAssets()
-        {
-
         }
 
         public void GameLoop(RenderWindow window)

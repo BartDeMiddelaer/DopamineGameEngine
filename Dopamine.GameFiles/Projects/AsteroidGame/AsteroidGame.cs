@@ -65,8 +65,6 @@ public class AsteroidGame : BaseGameFile, IGameFile
         rayCastingShader.SetUniform("resulution", new Vector2f(_configuration.WindowWidth, _configuration.WindowHeight));
         rayCastingShader.SetUniform("castRaysFrom", new Vector2f(-100, -100));
         rayCastingShader.SetUniformArray("astroidOridginals", astroidLister.GetAstroidOridginalsForShader());
-
-        Thread.Sleep(3000);
     }
     public void GameLoop(RenderWindow window)
     {

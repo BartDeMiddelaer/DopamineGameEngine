@@ -16,7 +16,7 @@ namespace Dopamine.GameFiles.Projects.HailstoneNumbers
         private readonly IEngineConfiguration _configuration;
         private readonly IEngineFunctionalitys _functionalitys;
 
-        private readonly ThreeXPlusOneGenerator threeXPlusOneGenerator;
+        private ThreeXPlusOneGenerator threeXPlusOneGenerator;
         private List<List<int>> threeXPlusOneTrieNumbers = new();
         private int modiloOffset = 150;
         private float amplidude = 1.0f;
@@ -28,9 +28,7 @@ namespace Dopamine.GameFiles.Projects.HailstoneNumbers
         {
             _functionalitys = functionalitys;
             _renderer = renderer;
-            _configuration = configuration;
-       
-            threeXPlusOneGenerator = new(1000);
+            _configuration = configuration;          
         }
         public void EventDeclaration(RenderWindow window)
         {
@@ -38,7 +36,8 @@ namespace Dopamine.GameFiles.Projects.HailstoneNumbers
         }
         public void LoadInProjectAssets()
         {
-
+            threeXPlusOneGenerator = new(1000);
+            threeXPlusOneTrieNumbers = threeXPlusOneGenerator.GenerateMultySet(200);
         }
         public void GameLoop(RenderWindow window)
         {

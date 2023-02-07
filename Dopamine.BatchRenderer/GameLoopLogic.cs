@@ -30,6 +30,8 @@ namespace Dopamine.BatchRenderer
             ConfigurRenderWindow();
             SetIco();
         }
+        public Task LoadAssets() => new Task(() => _gameFile.LoadInProjectAssets());
+
         public void RunGameCycle() 
         {
             // Game loop
@@ -56,7 +58,6 @@ namespace Dopamine.BatchRenderer
             }
             else throw new ArgumentNullException(nameof(_configuration));
         }
-        public Task LoadAssets() => new Task(() => _gameFile.LoadInProjectAssets());
         private void CreateRenderWindow()
         {
             // Make and open SFML OpenGl window
