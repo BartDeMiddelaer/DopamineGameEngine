@@ -18,7 +18,7 @@ namespace Dopamine.Core.Services.EngineServices
         public virtual float WindowScale { get; set; } = 1f;
 
         // Set the main name of the window
-        public virtual string Titel { get; set; } = "Dopamine GE";
+        public virtual string Titel { get; set; } = "DGE";
 
         // Enable or disabel Vsync
         public virtual bool EnableVsync { get; set; } = false;

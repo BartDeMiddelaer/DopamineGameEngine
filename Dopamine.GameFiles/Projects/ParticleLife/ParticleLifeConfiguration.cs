@@ -2,9 +2,9 @@
 using SFML.Graphics;
 using SFML.Window;
 
-namespace Dopamine.GameFiles.Projects.TemplateShader
+namespace Dopamine.GameFiles.Projects.ParticleLife
 {
-    public class TemplateShaderConfiguration : BaseEngineConfiguration
+    public class ParticleLifeConfiguration : BaseEngineConfiguration
     {
         public override uint WindowBitsPerPixel { get; set; } = 32;
         public override int WindowWidth { get; set; } = 800;
@@ -16,7 +16,7 @@ namespace Dopamine.GameFiles.Projects.TemplateShader
         public override bool SmoothPixelImage { get; set; } = true;
 
         public static string[] SplashScreenCategorie { get; set; } = {
-            "Template"
+            "Particles"
         };
     }
 }

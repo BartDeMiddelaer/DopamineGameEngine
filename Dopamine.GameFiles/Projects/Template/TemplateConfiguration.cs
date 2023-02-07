@@ -10,7 +10,6 @@ namespace Dopamine.GameFiles.Projects.Template
         public override int WindowWidth { get; set; } = 800;
         public override int WindowHeight { get; set; } = 600;
         public override float WindowScale { get; set; } = 1f;
-        public override string Titel { get; set; } = "Dopamine GE";
         public override bool EnableVsync { get; set; } = false;
         public override Styles WindowStyle { get; set; } = Styles.Default;
         public override Color BackGroundColor { get; set; } = new Color(238, 238, 238);

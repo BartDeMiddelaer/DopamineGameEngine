@@ -68,15 +68,17 @@ namespace Dopamine.BatchRenderer
         private void CreateRenderWindow()
         {
             // Make and open SFML OpenGl window
+            var vsyncStatus = _configuration.EnableVsync ? "on" : "off";
+
             _windowStatus.RenderWindow = new RenderWindow(new VideoMode
             {
                 Height = (uint)_configuration.WindowHeight,
                 Width = (uint)_configuration.WindowWidth,
                 BitsPerPixel = _configuration.WindowBitsPerPixel,
             },
-            $"{_configuration.Titel} {_gameFile}     Enabled Vsync -> {_configuration.EnableVsync}",
+            $"{_configuration.Titel} -> {_gameFile} -> Vsync: {vsyncStatus} " +
+            $"-> Res: {_configuration.WindowWidth}x{_configuration.WindowHeight}",
             _configuration.WindowStyle);
-
         }
         private void ConfigurRenderWindow()
         {

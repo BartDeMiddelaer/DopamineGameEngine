@@ -10,7 +10,6 @@ namespace Dopamine.GameFiles.Projects.AsteroidGame
         public override int WindowWidth { get; set; } = 1450;
         public override int WindowHeight { get; set; } = 900;
         public override float WindowScale { get; set; } = 1f;
-        public override string Titel { get; set; } = "Dopamine GE";
         public override bool EnableVsync { get; set; } = false;
         public override Styles WindowStyle { get; set; } = Styles.Close;
         public override Color BackGroundColor { get; set; } = Color.Black;
