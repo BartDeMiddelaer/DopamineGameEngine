@@ -20,10 +20,7 @@ namespace Dopamine.GameFiles.Projects.Template
         }
 
         public void EventDeclaration(RenderWindow window) { }
-        public void LoadInProjectAssets()
-        {
-
-        }
+        public void LoadInProjectAssets() { }
         public void GameLoop(RenderWindow window)
         {
             _renderer.Draw(window);

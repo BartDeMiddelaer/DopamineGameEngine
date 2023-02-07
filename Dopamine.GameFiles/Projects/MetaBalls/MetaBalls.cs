@@ -18,7 +18,6 @@ namespace Dopamine.GameFiles.Projects.MetaBalls
         private readonly HSLColor hslColor = new();
         private List<MetaBall> metaBalles;
 
-
         public MetaBalls(IRenderer renderer, IEngineConfiguration configuration)
         {
             _renderer = renderer;

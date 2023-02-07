@@ -21,7 +21,6 @@ namespace Dopamine.GameFiles.Projects.TemplateShader
             _renderer = renderer;
             _configuration = configuration;
         }
-
         public void EventDeclaration(RenderWindow window) { }
         public void LoadInProjectAssets()
         {
@@ -34,7 +33,6 @@ namespace Dopamine.GameFiles.Projects.TemplateShader
             // set shader mode to fragment shader
             myShader = new Shader(null, null, shaderFile);
         }
-
         public void GameLoop(RenderWindow window)
         {
             shift += 0.001f;

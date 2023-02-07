@@ -31,11 +31,12 @@ namespace Dopamine.BatchRenderer
         [STAThread]    
         static void Main()
         {
-            SplashScreenInjection splashScreenInjection = new();
-            splashScreenInjection.Inject();
+            //SplashScreenInjection splashScreenInjection = new();
+            //splashScreenInjection.Inject();
 
             ProjectInjection<CPURendererService> projectInjection = new();
-            projectInjection.Inject(splashScreenInjection.Project);
+            //projectInjection.Inject(splashScreenInjection.Project);
+            projectInjection.Inject("ParticleLife");        
         }
     }
 }

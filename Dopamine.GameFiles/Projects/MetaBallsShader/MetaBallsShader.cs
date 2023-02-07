@@ -39,7 +39,6 @@ namespace Dopamine.GameFiles.Projects.MetaBallsShader
             _configuration = configuration;        
         }
         #pragma warning restore CS8618 
-
         public void EventDeclaration(RenderWindow window)
         {
             window.KeyPressed += KeyPressed;
@@ -67,7 +66,6 @@ namespace Dopamine.GameFiles.Projects.MetaBallsShader
             shaderDataControlls.Draw(window);
             messageControls.Draw(window);
         }
-
 
         public void KeyPressed(object? sender, KeyEventArgs e) 
         {
@@ -261,7 +259,6 @@ namespace Dopamine.GameFiles.Projects.MetaBallsShader
             return toReturn;
         }
 
-
         public void ResetClockOnKeys(KeyEventArgs e, Keyboard.Key[] keys)
         {
             keys.ToList().ForEach(key => {
@@ -294,7 +291,7 @@ namespace Dopamine.GameFiles.Projects.MetaBallsShader
 
         #pragma warning disable CA1822 // Mark members as static
         public void PlaySoundOnKeys(KeyEventArgs e, Keyboard.Key[] keys, Action soundFunction)
-#pragma warning restore CA1822 // Mark members as static
+        #pragma warning restore CA1822 // Mark members as static
         {
             keys.ToList().ForEach(key => {          
                 if (e.Code == key) soundFunction.Invoke();                        
