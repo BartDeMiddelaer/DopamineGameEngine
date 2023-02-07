@@ -4,7 +4,8 @@ using SFML.Graphics;
 using SFML.Window;
 using SFML.System;
 using Image = SFML.Graphics.Image;
-using Dopamine.BatchRenderer.SplashScreenComponents;
+using Font = SFML.Graphics.Font;
+using Color = SFML.Graphics.Color;
 
 namespace Dopamine.BatchRenderer
 {
@@ -16,7 +17,6 @@ namespace Dopamine.BatchRenderer
         private readonly IEngineConfiguration _configuration;
         private readonly IWindowStatus _windowStatus;
         private readonly IEngineFunctionalitys _functionalitys;
-        private Task? loadInGameAssits = null;
 
         public GameLoopLogic(IEngineConfiguration configuration, IWindowStatus windowStatus ,
                               IGameFile gameFile, IEngineFunctionalitys functionalitys)
@@ -56,15 +56,7 @@ namespace Dopamine.BatchRenderer
             }
             else throw new ArgumentNullException(nameof(_configuration));
         }
-        public Task LoadAssets()
-        {
-            if (loadInGameAssits == null)
-            {
-                loadInGameAssits = new Task(() => _gameFile.LoadInProjectAssets());              
-                loadInGameAssits.Start();
-            }
-            return loadInGameAssits;
-        }
+        public Task LoadAssets() => new Task(() => _gameFile.LoadInProjectAssets());
         private void CreateRenderWindow()
         {
             // Make and open SFML OpenGl window
@@ -79,6 +71,8 @@ namespace Dopamine.BatchRenderer
             $"{_configuration.Titel} -> {_gameFile} -> Vsync: {vsyncStatus} " +
             $"-> Res: {_configuration.WindowWidth}x{_configuration.WindowHeight}",
             _configuration.WindowStyle);
+
+            LoadScreen(_gameFile.ToString() ?? "");
         }
         private void ConfigurRenderWindow()
         {
@@ -113,6 +107,53 @@ namespace Dopamine.BatchRenderer
             var icoPath = _functionalitys.FindPathFileNameInDopamineBatchRenderer("dopamine.png", "Image");
             Image image = new Image(icoPath);
             _windowStatus?.RenderWindow?.SetIcon(image.Size.X, image.Size.Y, image.Pixels);
+        }
+        public void LoadScreen(string info)
+        {
+            Text loadingTxt = new Text
+            {
+                Font = new Font("C:/Windows/Fonts/arial.ttf"),
+                CharacterSize = 30,
+                FillColor = Color.Black,
+                DisplayedString = "Loading",
+                OutlineColor = Color.White,
+                OutlineThickness = 2
+            };
+            Text infoTxt = new Text
+            {
+                Font = new Font("C:/Windows/Fonts/arial.ttf"),
+                CharacterSize = 30,
+                FillColor = Color.Black,
+                DisplayedString = info,
+                OutlineColor = Color.White,
+                OutlineThickness = 2
+            };
+
+            string imageFile = _functionalitys.FindPathFileNameInDopamineBatchRenderer("dopamine.png", "Image");                   
+            Texture texture = new Texture(imageFile);
+            Sprite img = new Sprite(texture);
+
+            var imgBounds = img.GetLocalBounds();
+            img.Position = new(
+                (_configuration.WindowWidth / 2) - (imgBounds.Width / 2),
+                (_configuration.WindowHeight / 2) - (imgBounds.Height / 2));
+
+            var loadingTxtSize = loadingTxt.GetLocalBounds();
+            var infoTxtSize = infoTxt.GetLocalBounds();
+
+            loadingTxt.Position = new(
+                (_configuration.WindowWidth / 2) - (loadingTxtSize.Width / 2),
+                (_configuration.WindowHeight / 2) - (loadingTxtSize.Height / 2));
+
+            infoTxt.Position = new(
+                (_configuration.WindowWidth / 2) - (infoTxtSize.Width / 2),
+                (_configuration.WindowHeight / 2) - (infoTxtSize.Height / 2) + loadingTxtSize.Height + 5);
+
+            _windowStatus?.RenderWindow?.Clear(Color.Black);
+            _windowStatus?.RenderWindow?.Draw(img);
+            _windowStatus?.RenderWindow?.Draw(loadingTxt);
+            _windowStatus?.RenderWindow?.Draw(infoTxt);
+            _windowStatus?.RenderWindow?.Display();
         }
     }
 }

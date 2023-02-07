@@ -35,11 +35,7 @@ namespace Dopamine.BatchRenderer
             splashScreenInjection.Inject();
 
             ProjectInjection<CPURendererService> projectInjection = new();
-            var gameScope = projectInjection.Inject(splashScreenInjection.Project);
-            GameLoopLogic? loopLogic = gameScope?.Resolve<GameLoopLogic>();
-
-            LoadScreenInjection loadScreenInjection = new();
-            loadScreenInjection.Inject(loopLogic, splashScreenInjection.Project);         
+            projectInjection.Inject(splashScreenInjection.Project);
         }
     }
 }

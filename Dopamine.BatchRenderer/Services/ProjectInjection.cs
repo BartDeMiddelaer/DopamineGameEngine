@@ -10,22 +10,22 @@ namespace Dopamine.BatchRenderer.Services
 {
     public class ProjectInjection<Renderer> where Renderer : IRenderer
     {
-        public ILifetimeScope? Inject(string gameToRun)
+        public void Inject(string gameToRun)
         {
             if (gameToRun != string.Empty)
             {
                 // if splashScreen.GameToStart != string.Empty it will start the dependesy injection with autofac
                 var gameContainer = BuildContainer(gameToRun);
-                var gameContainerScope = gameContainer.BeginLifetimeScope();
+                var gameContainerScope = gameContainer.BeginLifetimeScope();       
+                var GameLoop = gameContainerScope.Resolve<GameLoopLogic>();
 
-                // Runs if autofac is ready with injecting
-                return gameContainerScope;
+                var loadAssets = GameLoop.LoadAssets();
+                loadAssets.Start();
+                loadAssets.Wait();
+
+                GameLoop.RunGameCycle();
             }
-            else
-            {
-                Application.Exit();
-                return null;
-            }
+            else Application.Exit();
         }
         private void SetGameFileEndConfigFile(ContainerBuilder builder, string gameFileName)
         {
