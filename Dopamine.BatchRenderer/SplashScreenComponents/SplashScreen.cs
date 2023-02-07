@@ -29,7 +29,7 @@ namespace Dopamine.BatchRenderer.SplashScreenComponents
             SetSplashScreenSettings();
             SetLoopContainer();
             SetProjectNavigation();
-            SetIco();
+            //SetIco();
         }
         #pragma warning restore CS8618
 

@@ -116,20 +116,20 @@ namespace Dopamine.Core.Services.EngineServices
         
         private string FindPathFileNameInDomain(string fileName, string inFolderPath, string domain)
         {
-            bool wordIsFound = false;
-
             string path = "";
             var fileRootToSplit = Directory.GetCurrentDirectory();
-            var splitFileRoot = fileRootToSplit.Replace("\\", "/").Split('/');
+            string[] splitFileRoot = fileRootToSplit.Replace("\\", "/").Split('/');
 
-            splitFileRoot.ToList().ForEach(s =>
+            for (int i = 0; i < splitFileRoot.Length; i++)
             {
-                if (s == "Dopamine.Project") wordIsFound = true;
-                if (!wordIsFound) path += s + "/";
-            });
+                if (splitFileRoot[i].ToString() != "Dopamine.BatchRenderer")
+                {
+                    path += splitFileRoot[i].ToString() + "/";
+                }
+                else break;
+            }
 
-            path += $"Dopamine.Project/{domain}/{inFolderPath}/{fileName}";
-
+            path += $"{domain}/{inFolderPath}/{fileName}";
             return path;
         }
 
