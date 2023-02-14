@@ -1,13 +1,15 @@
 
 // Templayt
 uniform float color_shift;
+uniform vec2 resulution;
 
 void main()
 {
+    vec2 pos = gl_FragCoord.xy / resulution;
+    vec3 color = vec3(pos, 0.5);
+
     // Templayt
-    gl_FragColor = vec4(color_shift, 0.0, 1.0, 1.0);
+    gl_FragColor = vec4(color, color_shift);
 
-
-    //gl_FragColor = vec4(1, 0.0, 1.0, 1.0);
 }
 

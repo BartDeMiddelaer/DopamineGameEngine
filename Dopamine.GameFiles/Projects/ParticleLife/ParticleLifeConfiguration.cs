@@ -7,8 +7,8 @@ namespace Dopamine.GameFiles.Projects.ParticleLife
     public class ParticleLifeConfiguration : BaseEngineConfiguration
     {
         public override uint WindowBitsPerPixel { get; set; } = 32;
-        public override int WindowWidth { get; set; } = 800;
-        public override int WindowHeight { get; set; } = 600;
+        public override int WindowWidth { get; set; } = 1480;
+        public override int WindowHeight { get; set; } = 900;
         public override float WindowScale { get; set; } = 1f;
         public override bool EnableVsync { get; set; } = false;
         public override Styles WindowStyle { get; set; } = Styles.Default;

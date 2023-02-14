@@ -23,7 +23,7 @@ namespace Dopamine.BatchRenderer.Services
                 loadAssets.Start();
                 loadAssets.Wait();
 
-                GameLoop.RunGameCycle();
+                GameLoop.RunGameCycle();               
             }
             else Application.Exit();
         }
@@ -87,6 +87,11 @@ namespace Dopamine.BatchRenderer.Services
                 .As<IEngineFunctionalitys>()
                 .SingleInstance();
 
+            builder
+                .RegisterType<PanelsService>()
+                .As<IPanels>()
+                .SingleInstance();
+
             // Type of renderer you want
             builder
                 .RegisterType<Renderer>() // <-- set type of rendering gpu or cpu
@@ -95,6 +100,7 @@ namespace Dopamine.BatchRenderer.Services
 
             // Register the GameLoopLogic to run the Gameloop
             builder.RegisterType<GameLoopLogic>();
+
             return builder.Build();
         }
     }

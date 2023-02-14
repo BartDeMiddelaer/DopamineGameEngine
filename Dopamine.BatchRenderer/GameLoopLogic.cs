@@ -17,15 +17,18 @@ namespace Dopamine.BatchRenderer
         private readonly IEngineConfiguration _configuration;
         private readonly IWindowStatus _windowStatus;
         private readonly IEngineFunctionalitys _functionalitys;
+        private readonly IPanels _panels;
 
         public GameLoopLogic(IEngineConfiguration configuration, IWindowStatus windowStatus ,
-                              IGameFile gameFile, IEngineFunctionalitys functionalitys)
+                              IGameFile gameFile, IEngineFunctionalitys functionalitys, IPanels panels)
         {
             _windowStatus = windowStatus;
             _configuration = configuration;
             _functionalitys = functionalitys;
             _gameFile = gameFile;
-           
+            _panels = panels;
+
+
             CreateRenderWindow();
             ConfigurRenderWindow();
             SetIco();
@@ -50,6 +53,7 @@ namespace Dopamine.BatchRenderer
 
                     // Run Game loop lodgic
                     _gameFile.GameLoop(_windowStatus.RenderWindow);
+                    _panels.Draw(_windowStatus.RenderWindow);
                     _windowStatus.DrawfpsStatus();
 
                     // Show Renderwindow

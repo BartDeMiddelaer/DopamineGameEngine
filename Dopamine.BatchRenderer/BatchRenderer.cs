@@ -36,7 +36,7 @@ namespace Dopamine.BatchRenderer
 
             ProjectInjection<CPURendererService> projectInjection = new();
             //projectInjection.Inject(splashScreenInjection.Project);
-            projectInjection.Inject("ParticleLife");        
+            projectInjection.Inject("ParticleLife");
         }
     }
 }
